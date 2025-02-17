@@ -132,7 +132,43 @@
                             </Button.Content>
                         </Button>
                     </Grid>
-                    
+                    <Grid HorizontalAlignment="Stretch" ColumnSpacing="16" RowSpacing="4" Padding="0,8,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="0" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+
+                        <StackPanel Orientation="Horizontal" Padding="0" Spacing="6" Grid.Column="0" Grid.Row="0">
+                            <TextBlock Text="OptiScaler " FontWeight="Bold" VerticalAlignment="Center" Margin="0" Padding="0" />
+                            <Button Style="{StaticResource TextBlockButtonStyle}" Visibility="{x:Bind ViewModel.Game.MultipleDLSSFound, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" Command="{Binding MultipleDLLsFoundCommand}" CommandParameter="{x:Bind data:GameAssetType.DLSS}" Padding="0" ToolTipService.ToolTip="Multiple DLLs found">
+                                <Button.Content>
+                                    <FontIcon Glyph="&#xE7BA;" FontSize="16" Foreground="DarkOrange" VerticalAlignment="Center" />
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+
+                        <Button Grid.Column="0" Grid.Row="1" IsEnabled="{x:Bind ViewModel.Game.OptiScaler, Converter={StaticResource NullObjectToBoolConverter}}" Content="{x:Bind ViewModel.Game.OptiScaler.DisplayName, FallbackValue='Not found', Mode=OneWay}" Command="{x:Bind ViewModel.ChangeRecordCommand}" CommandParameter="{x:Bind data:GameAssetType.OptiScaler}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" />
+
+                        <StackPanel Orientation="Horizontal" Padding="0" Spacing="6" Grid.Column="1" Grid.Row="0" >
+                            <Button Style="{StaticResource TextBlockButtonStyle}" Visibility="{x:Bind ViewModel.Game.MultipleDLSSGFound, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" Command="{Binding MultipleDLLsFoundCommand}" CommandParameter="{x:Bind data:GameAssetType.DLSS_G}" Padding="0" ToolTipService.ToolTip="Multiple DLLs found">
+                                <Button.Content>
+                                    <FontIcon Glyph="&#xE7BA;" FontSize="16" Foreground="DarkOrange" VerticalAlignment="Center" />
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+
+
+
+                    </Grid>
                     <Grid HorizontalAlignment="Stretch" ColumnSpacing="16" RowSpacing="4" Padding="0,8,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
